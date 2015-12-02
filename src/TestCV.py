@@ -5,6 +5,9 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 vc = cv2.VideoCapture(0)
 rval, img = vc.read()
 
+if rval == False:
+    exit()
+
 while 1 > 0:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)

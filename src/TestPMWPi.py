@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import time
 
 # The pin that we will be using to control the servo.
-outputPin = 11
+outputPin = 12
 
 # Tell Pi which pin numbers we'll be using to refer to the GPIO pins.
 # This is the actual physical pin ordering on the board.
@@ -28,11 +28,11 @@ positionList = [leftPosition, middlePosition, rightPosition, middlePosition]
 msPerCycle = 1000 / frequencyHertz
 
 # Iterate through the positions sequence 3 times.
-for i in range(3):
+while True:
     for position in positionList:
         dutyCyclePercentage = position * 100 / msPerCycle
         print "Position: " + str(position)
-        print "Duty Cycle: " + stry(dutyCyclePercentage) + "%"
+        print "Duty Cycle: " + str(dutyCyclePercentage) + "%"
         print ""
         pwm.start(dutyCyclePercentage)
         time.sleep(.5)
