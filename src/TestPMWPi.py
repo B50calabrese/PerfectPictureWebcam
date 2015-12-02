@@ -4,6 +4,9 @@ import RPi.GPIO as GPIO
 # Used for time delays.
 import time
 
+# Used for key input.
+import cv2
+
 # The pin that we will be using to control the servo.
 outputPin = 11
 
@@ -21,21 +24,22 @@ pwm = GPIO.PWM(outputPin, frequencyHertz)
 # Position values.
 leftPosition = 0.75
 rightPosition = 2.5
-middlePosition = (rightPosition - leftPosition) / 2 + leftPosition
-
-positionList = [leftPosition, middlePosition, rightPosition, middlePosition]
 
 msPerCycle = 1000 / frequencyHertz
 
-# Iterate through the positions sequence 3 times.
-for i in range(3):
-    for position in positionList:
-        dutyCyclePercentage = position * 100 / msPerCycle
-        print "Position: " + str(position)
-        print "Duty Cycle: " + stry(dutyCyclePercentage) + "%"
-        print ""
+done = False
+
+while not done:
+    key = cv2.waitKey(20)
+
+    if key == 'w':
+        dutyCyclePercentage = leftPosition * 100 / msPerCycle
         pwm.start(dutyCyclePercentage)
-        time.sleep(.5)
+    else if key == 's':
+        dutyCyclePercentage = rightPosition * 100 / msPerCycle
+        pwm.start(dutyCyclePercentage)
+    else if key == 'q':
+        done = True
 
 pwm.stop()
 
