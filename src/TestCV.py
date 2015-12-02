@@ -6,6 +6,9 @@ vc = cv2.VideoCapture(0)
 rval, img = vc.read()
 font = cv2.FONT_HERSHEY_SIMPLEX
 
+if rval == False:
+    exit()
+
 while 1 > 0:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)

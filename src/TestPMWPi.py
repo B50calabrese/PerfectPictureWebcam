@@ -8,7 +8,7 @@ import time
 import cv2
 
 # The pin that we will be using to control the servo.
-outputPin = 11
+outputPin = 12
 
 # Tell Pi which pin numbers we'll be using to refer to the GPIO pins.
 # This is the actual physical pin ordering on the board.
