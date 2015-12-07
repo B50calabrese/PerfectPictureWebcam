@@ -12,7 +12,7 @@ lowerArray = np.array([50, 100, 100], np.uint8)
 upperArray = np.array([70, 255, 255], np.uint8)
 
 img = getImg()
-
+a = 'w'
 while 1 > 0:
     # Blur image in order to reduce noise.
     blur = cv2.blur(img, (5,5))
@@ -33,6 +33,8 @@ while 1 > 0:
       approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
       if len(approx) == 4:
         print "Found green square!!!!", cnt
-    input(a)
+    a = input()
+    if a == 'q':
+      break
     img = getImg()
 vc.release()
