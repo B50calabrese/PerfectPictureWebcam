@@ -33,7 +33,7 @@ key = 'a'
 
 while not done:
     
-    input(key)
+    raw_input(key)
 
     if key == 'w':
         dutyCyclePercentage = leftPosition * 100 / msPerCycle
