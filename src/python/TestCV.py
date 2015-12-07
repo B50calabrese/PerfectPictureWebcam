@@ -11,17 +11,20 @@ def getImg():
   #res = cv2.resize(i,[WIDTH, HEIGHT], fx = .5, fy = .5, interpolation = cv2.INTER_AREA)
   return i
 
+lowerArray = np.array([50, 100, 100], np.uint8)
+upperArray = np.array([70, 255, 255], np.uint8)
+
 img = getImg()
 
 while 1 > 0:
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    ret,threshold = cv2.threshold(gray, 127, 255, 1)
+    print "Converting to green"
+    greenImg = cv2.inRange(img, lower, upper)
     print "Finding contours"
     contours,h = cv2.findContours(threshold, 1, 2)
     print "Printing contours"
     for cnt in contours:
       approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
       if len(approx) == 4:
-        print "Found square!!!!", cnt
+        print "Found green square!!!!", cnt
     img = getImg()
 vc.release()
