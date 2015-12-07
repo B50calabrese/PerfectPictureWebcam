@@ -29,16 +29,21 @@ msPerCycle = 1000 / frequencyHertz
 
 done = False
 
+key = 'a'
+
 while not done:
-    key = cv2.waitKey(20)
+    
+    input(key)
 
     if key == 'w':
         dutyCyclePercentage = leftPosition * 100 / msPerCycle
         pwm.start(dutyCyclePercentage)
-    else if key == 's':
+        time.sleep(.5)
+    elif key == 's':
         dutyCyclePercentage = rightPosition * 100 / msPerCycle
         pwm.start(dutyCyclePercentage)
-    else if key == 'q':
+        time.sleep(.5)
+    elif key == 'q':
         done = True
 
 pwm.stop()
