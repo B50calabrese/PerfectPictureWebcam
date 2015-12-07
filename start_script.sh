@@ -1,4 +1,4 @@
 #!/bin/sh
 cd /home/pi/PerfectPictureWebcam/src/
-sudo python TestPMWPi.py
+sudo python src/python/TestCV.py
 cd /
