@@ -26,5 +26,6 @@ while 1 > 0:
       approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
       if len(approx) == 4:
         print "Found green square!!!!", cnt
+    input a
     img = getImg()
 vc.release()
