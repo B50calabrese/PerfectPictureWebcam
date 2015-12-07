@@ -1,7 +1,43 @@
+# Gives control of the GPIO pins on the raspberry pi.
+import RPi.GPIO as GPIO
+
+# Used for time delays.
+import time
 import numpy as np
 import cv2
  
+# The pin that we will be using to control the servo.
+outputPin = 12
+
+# Tell Pi which pin numbers we'll be using to refer to the GPIO pins.
+# This is the actual physical pin ordering on the board.
+GPIO.setmode(GPIO.BOARD)
+
+# Tells the CPU which pins do what.
+GPIO.setup(outputPin, GPIO.OUT)
+
+frequencyHertz = 90
+pwm = GPIO.PWM(outputPin, frequencyHertz)
+
+# Position values.
+leftPosition = 0.75
+rightPosition = 2.5
+
+msPerCycle = 1000 / frequencyHertz
+ 
 vc = cv2.VideoCapture(0)
+
+def rotateLeft():
+  dutyCyclePercentage = leftPosition * 100 / msPerCycle
+  pwm.start(dutyCyclePercentage)
+  time.sleep(.1)
+  pwm.stop
+
+def rotateRight():
+  dutyCyclePercentage = rightPosition * 100 / msPerCycle
+  pwm.start(dutyCyclePercentage)
+  time.sleep(.1)
+  pwm.stop()
 
 def getImg():
   _,i = vc.read()
