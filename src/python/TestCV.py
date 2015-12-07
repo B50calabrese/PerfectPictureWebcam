@@ -12,6 +12,9 @@ lowerArray = np.array([50, 100, 100], np.uint8)
 upperArray = np.array([70, 255, 255], np.uint8)
 
 img = getImg()
+height, width, n = img.shape
+height = height / 2
+width = width / 2
 a = 'w'
 while 1 > 0:
     # Blur image in order to reduce noise.
@@ -29,10 +32,24 @@ while 1 > 0:
     
     print "Printing contours"
     
+    count = 1
+    centerX = width
+    centerY = height
+    
     for cnt in contours:
       approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
       if len(approx) == 4:
-        print "Found green square!!!!", cnt
+        x,y,w,h = cv2.boundingRect(cnt)
+        centerX = centerX + (x + w / 2)
+        centerY = centerY + (y + h / 2)
+    centerX = centerX / count
+    centerY = centerY / count
+    
+    if (centerX < width):
+      rotateLeft()
+    if (centerX > width):
+      rotateRight()
+    
     a = raw_input()
     if a == 'q':
       break
