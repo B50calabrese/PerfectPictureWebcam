@@ -18,9 +18,9 @@ img = getImg()
 
 while 1 > 0:
     print "Converting to green"
-    greenImg = cv2.inRange(img, lower, upper)
+    greenImg = cv2.inRange(img, lowerArray, upperArray)
     print "Finding contours"
-    contours,h = cv2.findContours(threshold, 1, 2)
+    contours,h = cv2.findContours(greenImg, 1, 2)
     print "Printing contours"
     for cnt in contours:
       approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
