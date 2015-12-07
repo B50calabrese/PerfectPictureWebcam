@@ -8,8 +8,10 @@ HEIGHT = 480
 
 def getImg():
   _,i = vc.read()
-  res = cv2.resize(i,[WIDTH, HEIGHT], fx = .5, fy = .5, interpolation = cv2.INTER_AREA)
-  return res
+  #res = cv2.resize(i,[WIDTH, HEIGHT], fx = .5, fy = .5, interpolation = cv2.INTER_AREA)
+  return i
+
+img = getImg()
 
 while 1 > 0:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
