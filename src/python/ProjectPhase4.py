@@ -3,41 +3,26 @@ import numpy as np
 import RPi.GPIO as GPIO
 import time
 
+def quickPulse(pinNumber):
+  GPIO.output(pinNumber, 1)
+  time.sleep(sleepTime)
+  GPIO.output(pinNumber, 0)
+
 def moveRight():
   print "Right"
-  if DEBUG:
-    return
-  dutyCyclePercentage = leftPosition
-  pwm1.start(dutyCyclePercentage)
-  time.sleep(sleepTime)
-  pwm1.stop()
+  quickPulse(clockwisePin)
 
 def moveLeft():
   print "Left"
-  if DEBUG:
-    return
-  dutyCyclePercentage = rightPosition
-  pwm1.start(dutyCyclePercentage)
-  time.sleep(sleepTime)
-  pwm1.stop()
+  quickPulse(counterclockwisePin)
   
 def moveDown():
   print "Down"
-  if True:
-    return
-  dutyCyclePercentage = leftPosition
-  pwm2.start(dutyCyclePercentage)
-  time.sleep(sleepTime)
-  pwm2.stop()
+  return
 
 def moveUp():
   print "Up"
-  if True:
-    return
-  dutyCyclePercentage = rightPosition
-  pwm2.start(dutyCyclePercentage)
-  time.sleep(sleepTime)
-  pwm2.stop()
+  return
 
 def decideMovement(x1, y1, x2, y2):
   epsilon = 50
@@ -107,26 +92,16 @@ def main():
 
   
 # Global values and constants.
-outputPin1 = 12
-outputPin2 = 11
-leftPosition = 10.0
-rightPosition = 50.0
-msPerCycle = 20
-sleepTime = .2
-frequencyHertz = 90
-DEBUG = False
+clockwisePin = 11
+counterclockwisePin = 12
 
 # Set the mode for indexing pins.
 GPIO.setmode(GPIO.BOARD)
 
 # Tells the CPU which pins do what.
-GPIO.setup(outputPin1, GPIO.OUT)
-GPIO.setup(outputPin2, GPIO.OUT)
-pwm1 = GPIO.PWM(outputPin1, frequencyHertz)
-pwm2 = GPIO.PWM(outputPin2, frequencyHertz)
+GPIO.setup(clockwisePin, GPIO.OUT)
+GPIO.setup(counterclockwisePin, GPIO.OUT)
 
 main()
 
-pwm1.stop()
-pwm2.stop()
 GPIO.cleanup()
