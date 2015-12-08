@@ -94,6 +94,7 @@ def main():
 # Global values and constants.
 clockwisePin = 11
 counterclockwisePin = 12
+sleepTime = .2
 
 # Set the mode for indexing pins.
 GPIO.setmode(GPIO.BOARD)
