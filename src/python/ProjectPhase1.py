@@ -68,6 +68,10 @@ while not done:
         moveRight()
     elif key == 'q':
         done = True
+    else
+        pwm2.start(key)
+        time.sleep(sleepTime)
+        pwm2.stop()
 
 pwm1.stop()
 pwm2.stop()
