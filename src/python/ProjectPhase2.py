@@ -4,25 +4,25 @@ import numpy as np
 import cv2
 import curses
 
-def moveUp():
+def moveRight():
   dutyCyclePercentage = leftPosition
   pwm1.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm1.stop()
 
-def moveDown():
+def moveLeft():
   dutyCyclePercentage = rightPosition
   pwm1.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm1.stop()
   
-def moveLeft():
+def moveDown():
   dutyCyclePercentage = leftPosition
   pwm2.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm2.stop()
 
-def moveRight():
+def moveUp():
   dutyCyclePercentage = rightPosition
   pwm2.start(dutyCyclePercentage)
   time.sleep(sleepTime)
@@ -53,7 +53,7 @@ pwm2 = GPIO.PWM(outputPin2, frequencyHertz)
 
 # Position values.
 leftPosition = 10.0
-rightPosition = 50
+rightPosition = 50.0
 
 msPerCycle = 20
 
