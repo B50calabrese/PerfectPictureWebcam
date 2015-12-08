@@ -43,8 +43,8 @@ pwm1 = GPIO.PWM(outputPin1, frequencyHertz)
 pwm2 = GPIO.PWM(outputPin2, frequencyHertz)
 
 # Position values.
-leftPosition = 0.078
-rightPosition = 0.061
+leftPosition = 7.8
+rightPosition = 6.1
 
 msPerCycle = 20
 
@@ -69,7 +69,7 @@ while not done:
     elif key == 'q':
         done = True
     else:
-        pwm2.start(key)
+        pwm2.start(float(key))
         time.sleep(sleepTime)
         pwm2.stop()
 
