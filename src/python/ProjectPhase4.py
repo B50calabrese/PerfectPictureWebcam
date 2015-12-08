@@ -102,6 +102,12 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(clockwisePin, GPIO.OUT)
 GPIO.setup(counterclockwisePin, GPIO.OUT)
 
-main()
+# main()
+
+while True:
+  moveRight()
+  time.sleep(.5)
+  moveLeft()
+  time.sleep(.5)
 
 GPIO.cleanup()
