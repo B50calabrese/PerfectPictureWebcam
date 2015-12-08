@@ -43,10 +43,10 @@ pwm1 = GPIO.PWM(outputPin1, frequencyHertz)
 pwm2 = GPIO.PWM(outputPin2, frequencyHertz)
 
 # Position values.
-leftPosition = 60.0
-rightPosition = 40.0
+leftPosition = 0.078
+rightPosition = 0.061
 
-msPerCycle = 1000 / frequencyHertz
+msPerCycle = 20
 
 sleepTime = .15
 
