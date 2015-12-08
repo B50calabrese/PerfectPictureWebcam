@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import cv2
+import curses
 
 def moveUp():
   dutyCyclePercentage = leftPosition
@@ -56,24 +57,28 @@ key = 'a'
 
 val = 0.0
 
-while not done:
+# Initialize various things for curses to work.
+stdscr = curses.initscr()
+curses.cbreak()
+stdscr.keypad(1)
+
+stdscr.addstr(0,10,"Hit 'q' to quit")
+stdscr.refresh()
+
+while key != ord('q'):
     
-    key = raw_input("Input:")
-
-    if key == 'w':
+    key = stdscr.getch()
+    stdscr.addch(20, 25, key)
+    stdscr.refresh();
+    if key == ord('w'):
         moveUp()
-    elif key == 's':
+    elif key == ord('s'):
         moveDown()
-    elif key == 'a':
+    elif key == ord('a'):
         moveLeft()
-    elif key == 'd':
+    elif key == ord('d'):
         moveRight()
-    elif key == 'q':
-        done = True
-    pwm1.start(val)
-    time.sleep(sleepTime)
-    pwm1.stop()
-
+curses.endwin()
 pwm1.stop()
 pwm2.stop()
 GPIO.cleanup()
