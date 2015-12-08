@@ -33,7 +33,7 @@ def savePicture():
   _,img = vc.read()
   cv2.imwrite(fileName, img)
 
-fileName = "saved_pic.jpg"
+fileName = "saved_pic.jpeg"
 
 # The pins that we will be using to control the servos.
 outputPin1 = 12
