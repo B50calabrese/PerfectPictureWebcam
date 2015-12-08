@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import numpy as np
 import cv2
 import curses
 
@@ -26,6 +27,13 @@ def moveRight():
   pwm2.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm2.stop()
+  
+def savePicture():
+  vc = cv2.VideoCapture(0)
+  _,img = vc.read()
+  cv2.imWrite(fileName, img)
+
+fileName = "saved_pic.png"
 
 # The pins that we will be using to control the servos.
 outputPin1 = 12
@@ -78,6 +86,8 @@ while key != ord('q'):
         moveLeft()
     elif key == ord('d'):
         moveRight()
+    elif key == ord('p'):
+        savePicture()
 curses.endwin()
 pwm1.stop()
 pwm2.stop()
