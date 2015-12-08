@@ -1,4 +1,4 @@
 #!/bin/sh
 cd /home/pi/PerfectPictureWebcam/src/python
-#sudo python TestCV.py
+sudo python ProjectPhase1.py
 cd /
