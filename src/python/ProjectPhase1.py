@@ -3,25 +3,25 @@ import time
 import cv2
 
 def moveUp():
-  dutyCyclePercentage = leftPosition * 100 / msPerCycle
+  dutyCyclePercentage = leftPosition
   pwm1.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm1.stop()
 
 def moveDown():
-  dutyCyclePercentage = rightPosition * 100 / msPerCycle
+  dutyCyclePercentage = rightPosition
   pwm1.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm1.stop()
   
 def moveLeft():
-  dutyCyclePercentage = leftPosition * 100 / msPerCycle
+  dutyCyclePercentage = leftPosition
   pwm2.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm2.stop()
 
 def moveRight():
-  dutyCyclePercentage = rightPosition * 100 / msPerCycle
+  dutyCyclePercentage = rightPosition
   pwm2.start(dutyCyclePercentage)
   time.sleep(sleepTime)
   pwm2.stop()
@@ -43,8 +43,8 @@ pwm1 = GPIO.PWM(outputPin1, frequencyHertz)
 pwm2 = GPIO.PWM(outputPin2, frequencyHertz)
 
 # Position values.
-leftPosition = 0.75
-rightPosition = 2.5
+leftPosition = 60.0
+rightPosition = 40.0
 
 msPerCycle = 1000 / frequencyHertz
 
