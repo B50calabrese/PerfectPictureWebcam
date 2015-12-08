@@ -31,9 +31,9 @@ def moveRight():
 def savePicture():
   vc = cv2.VideoCapture(0)
   _,img = vc.read()
-  cv2.imWrite(fileName, img)
+  cv2.imwrite(fileName, img)
 
-fileName = "saved_pic.png"
+fileName = "saved_pic.jpg"
 
 # The pins that we will be using to control the servos.
 outputPin1 = 12
@@ -71,6 +71,8 @@ curses.cbreak()
 stdscr.keypad(1)
 
 stdscr.addstr(0,10,"Hit 'q' to quit")
+stdscr.addstr(1,10,"Hit 'p' to print image")
+stdscr.addstr(2,10,"Use w,a,s,d to control the mount")
 stdscr.refresh()
 
 while key != ord('q'):
