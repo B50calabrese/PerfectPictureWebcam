@@ -26,7 +26,7 @@ def moveRight():
   time.sleep(sleepTime)
   pwm2.stop()
 
-sleepTime = 0.01
+sleepTime = 0.05
 
 # The pins that we will be using to control the servos.
 outputPin1 = 12
@@ -46,7 +46,7 @@ pwm2 = GPIO.PWM(outputPin2, frequencyHertz)
 
 # Position values.
 leftPosition = 0.75
-rightPosition = 1.25
+rightPosition = 2.5
 
 msPerCycle = 1000 / frequencyHertz
 
