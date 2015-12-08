@@ -54,9 +54,11 @@ done = False
 
 key = 'a'
 
+val = 0.0
+
 while not done:
     
-    key = raw_input("Input:")
+    #key = raw_input("Input:")
 
     if key == 'w':
         moveUp()
@@ -68,10 +70,13 @@ while not done:
         moveRight()
     elif key == 'q':
         done = True
-    else:
-        pwm2.start(float(key))
-        time.sleep(sleepTime)
-        pwm2.stop()
+    pwm1.start(val)
+    time.sleep(sleepTime)
+    pwm1.stop()
+    print val
+    val = val + 1.0
+    if (val > 100.0):
+      val = 0.0
 
 pwm1.stop()
 pwm2.stop()
