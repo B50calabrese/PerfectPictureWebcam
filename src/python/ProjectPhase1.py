@@ -48,7 +48,7 @@ rightPosition = 0.25
 
 msPerCycle = 1000 / frequencyHertz
 
-sleepTime = msPerCycle / 1000
+sleepTime = .3
 
 done = False
 
